@@ -41,6 +41,16 @@ class BreedListFragment : Fragment(R.layout.fragment_breed_list) {
         viewModel = ViewModelProvider(this, viewModelFactory)[BreedViewModel::class.java]
         setupRecyclerView()
         observeViewModel()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        breedItemAdapter.onBreedClick = {
+            parentFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.fragment_container, BreedImagesFragment.getInstance(it.name))
+                .commit()
+        }
     }
 
     private fun setupRecyclerView() {

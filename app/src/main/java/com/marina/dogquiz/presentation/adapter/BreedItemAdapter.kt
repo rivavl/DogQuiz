@@ -14,6 +14,8 @@ import com.marina.dogquiz.presentation.entity.BreedItem
 class BreedItemAdapter :
     ListAdapter<BreedItem, BreedItemAdapter.BreedItemViewHolder>(BreedDiffUtilCallback()) {
 
+    var onBreedClick: ((BreedItem) -> Unit)? = null
+
     class BreedItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name = view.findViewById<TextView>(R.id.tv_breed_name)
     }
@@ -38,5 +40,9 @@ class BreedItemAdapter :
     override fun onBindViewHolder(holder: BreedItemViewHolder, position: Int) {
         val breed = getItem(position)
         holder.name.text = breed.name
+
+        holder.itemView.setOnClickListener {
+            onBreedClick?.invoke(breed)
+        }
     }
 }
