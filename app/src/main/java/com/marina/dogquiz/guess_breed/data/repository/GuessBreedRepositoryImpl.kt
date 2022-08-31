@@ -36,7 +36,7 @@ class GuessBreedRepositoryImpl : GuessBreedRepository {
         countOfOptions: Int
     ): List<String> {
         val answers = mutableListOf(correct)
-        while (answers.size < ANSWERS_COUNT) {
+        while (answers.size < countOfOptions) {
             val ans = breeds[Random.nextInt(0, breeds.size - 1)]
             if (ans !in answers) {
                 answers.add(ans)
