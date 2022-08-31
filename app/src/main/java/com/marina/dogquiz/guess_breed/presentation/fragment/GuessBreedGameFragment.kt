@@ -1,4 +1,4 @@
-package com.marina.dogquiz.guess_breed.presentation
+package com.marina.dogquiz.guess_breed.presentation.fragment
 
 import androidx.fragment.app.Fragment
 import com.marina.dogquiz.R

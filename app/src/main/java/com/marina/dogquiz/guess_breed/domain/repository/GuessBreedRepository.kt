@@ -6,7 +6,7 @@ import com.marina.dogquiz.guess_breed.domain.entity.Level
 
 interface GuessBreedRepository {
 
-    suspend fun getGuessBreedQuestion(): GuessDogGameQuestion
+    suspend fun getGuessBreedQuestion(options: Int): GuessDogGameQuestion
 
     suspend fun getGameSettings(level: Level): GameSettings
 }

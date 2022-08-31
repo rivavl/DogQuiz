@@ -10,11 +10,11 @@ import kotlin.random.Random
 
 class GuessBreedRepositoryImpl : GuessBreedRepository {
 
-    override suspend fun getGuessBreedQuestion(): GuessDogGameQuestion {
+    override suspend fun getGuessBreedQuestion(options: Int): GuessDogGameQuestion {
         val randomImage = RetrofitInstance.gameService.getRandomImage()
         val breeds = RetrofitInstance.gameService.getAllBreeds()
         val correctAnswer = extractBreedFromUrl(randomImage.message)
-        val allAnswers = generateAnswers(correctAnswer, breeds.message)
+        val allAnswers = generateAnswers(correctAnswer, breeds.message, options)
         val allAnswersList = GuessDogGameDataMapper.mapStringsToAnswers(allAnswers)
 
         return GuessDogGameQuestion(
@@ -30,7 +30,11 @@ class GuessBreedRepositoryImpl : GuessBreedRepository {
         return breed
     }
 
-    private fun generateAnswers(correct: String, breeds: List<String>): List<String> {
+    private fun generateAnswers(
+        correct: String,
+        breeds: List<String>,
+        countOfOptions: Int
+    ): List<String> {
         val answers = mutableListOf(correct)
         while (answers.size < ANSWERS_COUNT) {
             val ans = breeds[Random.nextInt(0, breeds.size - 1)]
@@ -72,9 +76,5 @@ class GuessBreedRepositoryImpl : GuessBreedRepository {
                 )
             }
         }
-    }
-
-    companion object {
-        private const val ANSWERS_COUNT = 4
     }
 }

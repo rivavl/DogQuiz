@@ -7,6 +7,10 @@ class GetGuessBreedQuestionUseCase(
     private val repository: GuessBreedRepository
 ) {
     suspend operator fun invoke(): GuessDogGameQuestion {
-        return repository.getGuessBreedQuestion()
+        return repository.getGuessBreedQuestion(COUNT_OF_OPTIONS)
+    }
+
+    private companion object {
+        private const val COUNT_OF_OPTIONS = 4
     }
 }
