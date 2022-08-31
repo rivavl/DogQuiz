@@ -27,8 +27,8 @@ class GuessBreedRepositoryImpl : GuessBreedRepository {
         return breed
     }
 
-    private fun generateAnswers(correct: String, breeds: List<String>): Set<String> {
-        val answers = mutableSetOf(correct)
+    private fun generateAnswers(correct: String, breeds: List<String>): List<String> {
+        val answers = mutableListOf(correct)
         while (answers.size < ANSWERS_COUNT) {
             val ans = breeds[Random.nextInt(0, breeds.size - 1)]
             if (ans !in answers) {

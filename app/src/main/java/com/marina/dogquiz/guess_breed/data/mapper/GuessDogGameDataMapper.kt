@@ -8,9 +8,9 @@ object GuessDogGameDataMapper {
         return Answer(str)
     }
 
-    fun mapStringsToAnswers(set: Set<String>): Set<Answer> {
-        return set.map {
+    fun mapStringsToAnswers(list: List<String>): List<Answer> {
+        return list.map {
             mapStringToAnswer(it)
-        }.toSet()
+        }
     }
 }
