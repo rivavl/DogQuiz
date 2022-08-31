@@ -71,6 +71,11 @@ class BreedImagesFragment : Fragment(R.layout.fragment_breed_images) {
         currentBreed = args.getString(BREED_NAME).toString()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     companion object {
         private const val BREED_NAME = "breed_id"
 

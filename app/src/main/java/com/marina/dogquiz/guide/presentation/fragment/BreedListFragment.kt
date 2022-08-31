@@ -66,4 +66,9 @@ class BreedListFragment : Fragment(R.layout.fragment_breed_list) {
             breedItemAdapter.submitList(it)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
