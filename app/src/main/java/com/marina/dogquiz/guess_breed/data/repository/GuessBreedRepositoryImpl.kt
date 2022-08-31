@@ -2,21 +2,24 @@ package com.marina.dogquiz.guess_breed.data.repository
 
 import com.marina.dogquiz.app.RetrofitInstance
 import com.marina.dogquiz.guess_breed.data.mapper.GuessDogGameDataMapper
-import com.marina.dogquiz.guess_breed.domain.entity.GuessDogGame
+import com.marina.dogquiz.guess_breed.domain.entity.GameSettings
+import com.marina.dogquiz.guess_breed.domain.entity.GuessDogGameQuestion
+import com.marina.dogquiz.guess_breed.domain.entity.Level
 import com.marina.dogquiz.guess_breed.domain.repository.GuessBreedRepository
 import kotlin.random.Random
 
 class GuessBreedRepositoryImpl : GuessBreedRepository {
 
-    override suspend fun getGuessBreedQuestion(): GuessDogGame {
+    override suspend fun getGuessBreedQuestion(): GuessDogGameQuestion {
         val randomImage = RetrofitInstance.gameService.getRandomImage()
         val breeds = RetrofitInstance.gameService.getAllBreeds()
         val correctAnswer = extractBreedFromUrl(randomImage.message)
         val allAnswers = generateAnswers(correctAnswer, breeds.message)
-        val allAnswersSet = GuessDogGameDataMapper.mapStringsToAnswers(allAnswers)
-        return GuessDogGame(
+        val allAnswersList = GuessDogGameDataMapper.mapStringsToAnswers(allAnswers)
+
+        return GuessDogGameQuestion(
             randomImage.message,
-            allAnswersSet,
+            allAnswersList,
             GuessDogGameDataMapper.mapStringToAnswer(correctAnswer)
         )
     }
@@ -36,6 +39,39 @@ class GuessBreedRepositoryImpl : GuessBreedRepository {
             }
         }
         return answers
+    }
+
+    override suspend fun getGameSettings(level: Level): GameSettings {
+        return when (level) {
+            Level.TEST -> {
+                GameSettings(
+                    3,
+                    50,
+                    8
+                )
+            }
+            Level.EASY -> {
+                GameSettings(
+                    10,
+                    70,
+                    60
+                )
+            }
+            Level.NORMAL -> {
+                GameSettings(
+                    20,
+                    80,
+                    40
+                )
+            }
+            Level.HARD -> {
+                GameSettings(
+                    30,
+                    90,
+                    40
+                )
+            }
+        }
     }
 
     companion object {
