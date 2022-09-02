@@ -46,10 +46,7 @@ class BreedListFragment : Fragment(R.layout.fragment_breed_list) {
 
     private fun setOnClickListeners() {
         breedItemAdapter.onBreedClick = {
-            parentFragmentManager.beginTransaction()
-                .addToBackStack(null)
-                .replace(R.id.fragment_container, BreedImagesFragment.getInstance(it.name))
-                .commit()
+           BreedListFragmentDirections.actionBreedListFragmentToBreedImagesFragment()
         }
     }
 

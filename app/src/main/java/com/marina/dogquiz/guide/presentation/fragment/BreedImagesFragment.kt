@@ -16,7 +16,7 @@ import com.marina.dogquiz.guide.presentation.adapter.BreedImageAdapter
 import com.marina.dogquiz.guide.presentation.view_model.ImageViewModelFactory
 import com.marina.dogquiz.guide.presentation.view_model.ImagesViewModel
 
-class BreedImagesFragment : Fragment(R.layout.fragment_breed_images) {
+class BreedImagesFragment : Fragment() {
 
     private var currentBreed: String = ""
 

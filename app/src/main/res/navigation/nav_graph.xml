@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/chooseLevelFragment">
+
+    <fragment
+        android:id="@+id/breedImagesFragment"
+        android:name="com.marina.dogquiz.guide.presentation.fragment.BreedImagesFragment"
+        android:label="BreedImagesFragment" />
+    <fragment
+        android:id="@+id/chooseLevelFragment"
+        android:name="com.marina.dogquiz.guess_breed.presentation.fragment.ChooseLevelFragment"
+        android:label="ChooseLevelFragment">
+        <action
+            android:id="@+id/action_chooseLevelFragment_to_guessBreedGameFragment"
+            app:destination="@id/guessBreedGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/breedListFragment"
+        android:name="com.marina.dogquiz.guide.presentation.fragment.BreedListFragment"
+        android:label="BreedListFragment">
+        <action
+            android:id="@+id/action_breedListFragment_to_breedImagesFragment"
+            app:destination="@id/breedImagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/guessBreedGameFragment"
+        android:name="com.marina.dogquiz.guess_breed.presentation.fragment.GuessBreedGameFragment"
+        android:label="GuessBreedGameFragment">
+        <argument
+            android:name="level"
+            app:argType="com.marina.dogquiz.guess_breed.domain.entity.Level" />
+    </fragment>
+</navigation>

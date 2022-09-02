@@ -69,8 +69,8 @@ class GuessBreedGameViewModel(
         updateProgress()
     }
 
-    fun chooseAnswer(ans: Answer) {
-        checkAnswer(ans)
+    fun chooseAnswer(ans: String) {
+        checkAnswer(Answer(ans))
         updateProgress()
         generateNextQuestion()
     }
