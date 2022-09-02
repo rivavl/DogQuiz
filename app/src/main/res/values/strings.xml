@@ -8,4 +8,8 @@
     <string name="score_answers">Ваш счет: %s</string>
     <string name="game_over">Game Over</string>
     <string name="retry">Попробовать снова</string>
+    <string name="test_level">Test</string>
+    <string name="easy_level">Easy</string>
+    <string name="normal_level">Normal</string>
+    <string name="hard_level">Hard</string>
 </resources>
