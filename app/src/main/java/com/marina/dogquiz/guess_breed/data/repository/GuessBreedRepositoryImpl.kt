@@ -42,6 +42,7 @@ class GuessBreedRepositoryImpl : GuessBreedRepository {
                 answers.add(ans)
             }
         }
+        answers.shuffle()
         return answers
     }
 
