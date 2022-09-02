@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.marina.dogquiz.databinding.FragmentGuessBreedGameBinding
@@ -124,11 +125,11 @@ class GuessBreedGameFragment : Fragment() {
 
 
     private fun launchGameFinishedFragment(gameResult: GameResult) {
-//        findNavController().navigate(
-//            GameFragmentDirections.actionGameFragmentToGameFinishedFragment(
-//                gameResult
-//            )
-//        )
+        findNavController().navigate(
+            GuessBreedGameFragmentDirections.actionGuessBreedGameFragmentToGameFinishedFragment(
+                gameResult
+            )
+        )
     }
 
     override fun onDestroy() {
